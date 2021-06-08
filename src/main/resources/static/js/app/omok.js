@@ -1,4 +1,4 @@
-var wsURL = "http://localhost:8080/ws";
+var URL = "http://sciencemj-post.kro.kr:8080/";
 var webSocket;
 var stompClient = null;
 var user = 0;
@@ -11,7 +11,7 @@ var player_t;
 var turn_t;
 function connect(){
     if(!webSocket){
-      webSocket = new SockJS(wsURL);
+      webSocket = new SockJS(URL+"ws");
       var msg = {
         sender: 0,
         msg: "test",
@@ -106,10 +106,10 @@ function getMap(payload){
       draw(message.map);
       if(win == (user + 1)){
         alert("You WIN!!!");
-        window.location.replace("http://localhost:8080/");
+        window.location.replace(URL);
       }else if(win != -1){
         alert("opps win(-_-)");
-        window.location.replace("http://localhost:8080/");
+        window.location.replace(URL);
       }
   }
 }
