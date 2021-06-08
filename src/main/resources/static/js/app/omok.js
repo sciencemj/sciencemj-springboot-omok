@@ -9,6 +9,7 @@ var win = -1;
 var colors = ["white", "black"];
 var player_t;
 var turn_t;
+var omokMap;
 function connect(){
     if(!webSocket){
       webSocket = new SockJS(URL+"ws");
@@ -79,7 +80,7 @@ function init(){
 function sendMessage(x,y) {
     let _x = Math.round((x-135)/30);
     let _y = Math.round((y-15)/30);
-    if(_x >= 0 && _y >= 0 && _x <= 20 && _y <= 20 && turn == user){
+    if(_x >= 0 && _y >= 0 && _x <= 20 && _y <= 20 && turn == user && omokMap[_y][_x] == 0){
       if(turn_ == 0){
         turn = 1;
       }else{
@@ -97,6 +98,7 @@ function sendMessage(x,y) {
 function getMap(payload){
   var message = JSON.parse(payload.body);
   if(id == message.id){
+      omokMap = message.map;
       turn = message.turn;
       win = message.win;
       turn_t = document.getElementById('TURN')
