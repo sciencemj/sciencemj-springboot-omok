@@ -1,4 +1,4 @@
-var URL = "http://sciencemj-post.kro.kr:8080/";
+var URL = window.location.protocol + "//" + window.location.host + "/";
 var webSocket;
 var stompClient = null;
 var user = 0;

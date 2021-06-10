@@ -1,0 +1,27 @@
+html{
+    font-size: 10px;
+    text-align: center;
+    font-family: 'Baloo Tammudu 2';
+    background-color: cornsilk;
+}
+body{
+    width: 1000px;
+    margin: 0 auto;
+    background-color: bisque;
+    padding: 0 20px 20px 20px;
+    border: 5px solid black;
+}
+h1{
+    font-size: 40px;
+    margin: 0;
+    padding: 20px 0;
+    color: cornsilk;
+    text-shadow: 3px 3px 1px black;
+}
+canvas{
+    display: block;
+    margin: 0 auto;
+}
+p{
+    color: black;
+}
