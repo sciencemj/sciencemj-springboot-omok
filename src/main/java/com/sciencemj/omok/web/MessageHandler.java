@@ -31,21 +31,30 @@ public class MessageHandler {
             String[] cordinateS = message.getMsg().split(" ");
             int x = Integer.parseInt(cordinateS[0]);
             int y = Integer.parseInt(cordinateS[1]);
-            addStone(x, y, message.getSender(), message.getId());
-            int result = g.isEnd(map, x, y);
-            map.setWin(result);
-            map.changeTurn();
+            if (addStone(x, y, message.getSender(), message.getId())) {
+                int result = g.isEnd(map, x, y);
+                map.setWin(result);
+                map.changeTurn();
+            }
         }else if (message.getType().equals(MessageType.JOIN)){
             log.info("joined!");
         }
         return map;
     }
-    public void addStone(int x, int y, int sender, Long id){
-        if (sender == 0){
-            oMapService.findById(id).getMap()[y][x] = 1;
-        }else if (sender == 1){
-            oMapService.findById(id).getMap()[y][x] = 2;
+    public boolean addStone(int x, int y, int sender, Long id){
+        int[][] map = oMapService.findById(id).getMap();
+        if (map[y][x] == 0) {
+            if (sender == 0) {
+                oMapService.findById(id).getMap()[y][x] = 1;
+                return true;
+            } else if (sender == 1) {
+                oMapService.findById(id).getMap()[y][x] = 2;
+                return true;
+            }
+        }else {
+            return false;
         }
+        return false;
     }
 
 }

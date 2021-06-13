@@ -12,7 +12,7 @@ var turn_t;
 var omokMap;
 function connect(){
     if(!webSocket){
-      webSocket = new SockJS(URL+"ws");
+      webSocket = new SockJS("/ws");
       var msg = {
         sender: 0,
         msg: "test",
@@ -81,6 +81,7 @@ function sendMessage(x,y) {
     let _x = Math.round((x-135)/30);
     let _y = Math.round((y-15)/30);
     if(_x >= 0 && _y >= 0 && _x <= 20 && _y <= 20 && turn == user && omokMap[_y][_x] == 0){
+    alert(omokMap[_y][_x]);
       if(turn_ == 0){
         turn = 1;
       }else{
